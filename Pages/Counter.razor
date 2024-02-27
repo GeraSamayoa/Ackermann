@@ -4,17 +4,23 @@
 
 <h1>Funcion de Ackermann</h1>
 
-<input type="number" @bind="m" />
-<input type="number" @bind="n" />
-<button @onclick="() => result = Ackermann(m, n)">Calcular</button>
+<input type="number" @bind="m" placeholder="Ingrese el primer numero"/>
+<input type="number" @bind="n" placeholder="Ingrese el segundo numero"/>
+<button @onclick="resultado">Calcular</button>
 
 <p>Resultado: @result</p>
 
 
 @code {
 	int result;
-	int m;
-	int n;
+	int? m;
+	int? n;
+
+	void resultado () {
+		result = Ackermann( m ?? 0, n ?? 0);
+		m = null;
+		n = null;
+	}
 
 	int Ackermann(int m, int n)
 	{
