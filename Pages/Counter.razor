@@ -2,5 +2,34 @@
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Estoy trabanjando</h1>
+<h1>Funcion de Ackermann</h1>
+
+<input type="number" @bind="m" />
+<input type="number" @bind="n" />
+<button @onclick="() => result = Ackermann(m, n)">Calcular</button>
+
+<p>Resultado: @result</p>
+
+
+@code {
+	int result;
+	int m;
+	int n;
+
+	int Ackermann(int m, int n)
+	{
+		if (m == 0)
+		{
+			return n + 1;
+		}
+		else if (n == 0)
+		{
+			return Ackermann(m - 1, 1);
+		}
+		else
+		{
+			return Ackermann(m - 1, Ackermann(m, n - 1));
+		}
+	}
+}
 
